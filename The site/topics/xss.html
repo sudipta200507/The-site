@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Site Scripting (XSS) | Pentesting Fundamentals</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo"><a href="../index.html"><span class="logo-icon"></span><span class="logo-text">SecForAI</span></a></div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown"><a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">Subjects</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../subjects/networking.html">Computer Networks</a></li>
+                                <li><a href="../subjects/cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="../subjects/web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="../subjects/pentesting.html" class="active">Web App Pentesting</a></li>
+                                <li><a href="../subjects/ai.html">AI Concepts</a></li>
+                                <li><a href="../subjects/ml.html">Machine Learning</a></li>
+                                <li><a href="../subjects/dl.html">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form"><input type="search" class="search-input" placeholder="Search topics..."><button type="submit" class="search-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button></form>
+                    <button class="theme-toggle" id="themeToggle"><svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg><svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content topic-page">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <div class="widget widget-search"><h3 class="widget-title">Search Topics</h3><input type="search" class="widget-search-input" placeholder="Find a topic..."></div>
+                    <div class="widget widget-quote"><div class="quote-content"><p class="quote-text">"XSS attacks exploit the trust a user has in a website. They turn the website into an attacker's tool."</p></div></div>
+                    <div class="widget widget-recent"><h3 class="widget-title">Recent Topics</h3><ul class="recent-list"><li class="recent-item"><a href="sqli.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #4D96FF, #249DFF);"></span><div class="recent-info"><span class="recent-title">SQL Injection</span><span class="recent-meta">Database Security</span></div></a></li><li class="recent-item"><a href="csrf.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #6C5CE7, #A29BFE);"></span><div class="recent-info"><span class="recent-title">CSRF Protection</span><span class="recent-meta">Authentication</span></div></a></li></ul></div>
+                    <div class="widget widget-categories"><h3 class="widget-title">Subjects</h3><ul class="categories-list"><li><a href="../subjects/networking.html" class="category-link"><span class="category-badge">NETWORKING</span> <span class="category-count">12 Topics</span></a></li><li><a href="../subjects/cs-essentials.html" class="category-link"><span class="category-badge">CS</span> <span class="category-count">8 Topics</span></a></li><li><a href="../subjects/web-fundamentals.html" class="category-link"><span class="category-badge">WEB</span> <span class="category-count">10 Topics</span></a></li><li><a href="../subjects/pentesting.html" class="category-link"><span class="category-badge">PENTEST</span> <span class="category-count">15 Topics</span></a></li></ul></div>
+                </aside>
+                <div class="content-area">
+                    <div class="topic-page-header">
+                        <nav class="topic-breadcrumb"><a href="../index.html">Home</a> <span>&rsaquo;</span> <a href="../subjects/pentesting.html">Pentesting</a> <span>&rsaquo;</span> <span>XSS Attack</span></nav>
+                        <h1 class="topic-title-page">Cross-Site Scripting (XSS)</h1>
+                        <p class="topic-excerpt-page">Cross-Site Scripting (XSS) allows attackers to inject malicious scripts into web pages viewed by other users. It exploits the trust users have in a website's content.</p>
+                        <div class="topic-meta"><span>7 min read</span> <span>Updated: July 2026</span></div>
+                    </div>
+                    <div class="topic-content">
+                        <h2>What is Cross-Site Scripting?</h2>
+                        <p>XSS occurs when an application includes untrusted data in a web page without proper validation or escaping. The malicious script then executes in the victim's browser.</p>
+                        <p><strong>Analogy:</strong> Imagine a company's internal newsletter that prints employees' submitted comments. If someone submits a comment with a hidden microphone script, every reader would unknowingly start recording audio.</p>
+
+                        <h3>XSS Attack Flow</h3>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 550 180">
+                                <rect x="20" y="20" width="100" height="40" rx="4" fill="#E74C3C" opacity="0.9"></rect>
+                                <text x="70" y="45" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Attacker</text>
+                                <text x="70" y="60" text-anchor="middle" fill="#eee" font-size="10">Malicious Script</text>
+                                <path d="M120 40 L200 40 L200 100 L280 100" stroke="#E74C3C" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="280" y="80" width="120" height="40" rx="4" fill="#3498DB" opacity="0.9"></rect>
+                                <text x="340" y="103" text-anchor="middle" fill="white" font-size="11" font-weight="bold">Vulnerable Site</text>
+                                <path d="M400 100 L480 100 L480 20 L540 20" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="540" y="0" width="100" height="40" rx="4" fill="#27AE60" opacity="0.9"></rect>
+                                <text x="590" y="23" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Victim</text>
+                            </svg>
+                        </div>
+
+                        <h3 class="code-header">Vulnerable Code Example</h3>
+                        <div class="code-comparison">
+                            <div class="code-column vulnerable">
+                                <div class="code-column-title">VULNERABLE</div>
+                                <div class="code-block">
+<span class="comment">// JavaScript - Rendering user input directly</span><br>
+<span class="keyword">app</span>.<span class="function">get</span>(<span class="string">'/profile'</span>, (req, res) =><br>
+&nbsp;&nbsp;<span class="keyword">const</span> name = req.query.name;<br>
+&nbsp;&nbsp;res.<span class="function">send</span>(`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="template">&lt;h1&gt;</span>Hi ${name}<span class="template">&lt;/h1&gt;</span><br>
+&nbsp;&nbsp;`);<br>
+});
+                                </div>
+                                <p><strong>Problem:</strong> The name parameter is inserted directly into HTML without escaping.</p>
+                            </div>
+                            <div class="code-column safe">
+                                <div class="code-column-title">SAFE (FIXED)</div>
+                                <div class="code-block">
+<span class="comment">// Using proper escaping</span><br>
+<span class="keyword">const</span> escapedName = name<br>
+&nbsp;&nbsp;.<span class="function">replace</span>(<span class="regexp">/&amp;/g</span>, <span class="string">'&amp;amp;'</span>)<br>
+&nbsp;&nbsp;.<span class="function">replace</span>(<span class="regexp">/&lt;/g</span>, <span class="string">'&amp;lt;'</span>)<br>
+&nbsp;&nbsp;.<span class="function">replace</span>(<span class="regexp">/"/g</span>, <span class="string">'&amp;quot;'</span>);<br>
+res.<span class="function">send</span>(`Hi ${escapedName}`);
+                                </div>
+                                <p><strong>Fix:</strong> Escape HTML special characters before rendering.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-this-matters">
+                            <div class="why-title">Why This Matters for Pentesting</div>
+                            <p class="why-text">XSS is one of the most common vulnerabilities because it allows attackers to steal session tokens, keylog, deface pages, or redirect to malicious sites.</p>
+                        </div>
+
+                        <h3 class="code-header">XSS Attack Examples</h3>
+                        <div class="code-block">
+<span class="template">&lt;script&gt;</span>alert('XSS');<span class="template">&lt;/script&gt;</span><br>
+<span class="template">&lt;img src="x" onerror="alert('XSS')"&gt;</span><br>
+<span class="template">&lt;svg onload="alert('XSS')"&gt;</span>
+                        </div>
+
+                        <h3>Prevention</h3>
+                        <ul>
+                            <li><strong>Output Encoding:</strong> Always encode data before rendering</li>
+                            <li><strong>Content Security Policy (CSP):</strong> Use CSP headers</li>
+                            <li><strong>Input Validation:</strong> Validate and sanitize all user input</li>
+                            <li><strong>Use Modern Frameworks:</strong> React, Vue, Angular have built-in protection</li>
+                        </ul>
+
+                        <div class="quiz-section" id="quiz-container">
+                            <h3 class="quiz-title">Check Your Understanding</h3>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 1</div>
+                                <div class="quiz-question-text">What is the primary difference between Reflected and Stored XSS?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1" value="0"> Reflected XSS targets mobile devices</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="1"> Stored XSS is saved in database, Reflected requires user clicking link</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="2"> Reflected XSS is more dangerous</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="3"> There is no difference</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 2</div>
+                                <div class="quiz-question-text">What does a Content Security Policy (CSP) header help prevent?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2" value="0"> Only SQL Injection</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="1"> XSS attacks by restricting script sources</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="2"> Only CSRF attacks</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="3"> All attacks equally</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-controls">
+                                <button class="btn btn-primary" id="submitQuiz">Submit Answers</button>
+                                <span class="quiz-score" id="quizScore">Score: 0/2</span>
+                            </div>
+                            <div class="quiz-feedback" id="quizFeedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4 class="footer-title">SecForAI</h4><p class="footer-desc">Security education for AI/ML engineers.</p></div>
+                <div class="footer-col"><h4 class="footer-title">Subjects</h4><ul class="footer-links"><li><a href="../subjects/networking.html">Computer Networks</a></li><li><a href="../subjects/cs-essentials.html">CS Essentials</a></li><li><a href="../subjects/web-fundamentals.html">Web Fundamentals</a></li><li><a href="../subjects/pentesting.html">Web App Pentesting</a></li></ul></div>
+                <div class="footer-col"><h4 class="footer-title">Popular Topics</h4><ul class="footer-links"><li><a href="sqli.html">SQL Injection</a></li><li><a href="xss.html">XSS</a></li><li><a href="csrf.html">CSRF</a></li><li><a href="ssrf.html">SSRF</a></li></ul></div>
+                <div class="footer-col"><h4 class="footer-title">About</h4><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p class="footer-copyright">&copy; 2026 SecForAI. Built for offline learning.</p></div>
+        </div>
+    </footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>

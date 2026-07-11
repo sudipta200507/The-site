@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSRF Prevention | Pentesting Fundamentals</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo"><a href="../index.html"><span class="logo-icon"></span><span class="logo-text">SecForAI</span></a></div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown"><a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">Subjects</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../subjects/networking.html">Computer Networks</a></li>
+                                <li><a href="../subjects/cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="../subjects/web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="../subjects/pentesting.html" class="active">Web App Pentesting</a></li>
+                                <li><a href="../subjects/ai.html">AI Concepts</a></li>
+                                <li><a href="../subjects/ml.html">Machine Learning</a></li>
+                                <li><a href="../subjects/dl.html">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form"><input type="search" class="search-input" placeholder="Search topics..."><button type="submit" class="search-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button></form>
+                    <button class="theme-toggle" id="themeToggle"><svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg><svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content topic-page">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <div class="widget widget-search"><h3 class="widget-title">Search Topics</h3><input type="search" class="widget-search-input" placeholder="Find a topic..."></div>
+                    <div class="widget widget-quote"><div class="quote-content"><p class="quote-text">"SSRF turns the server into an attacker's weapon - using it to probe or attack internal systems."</p></div></div>
+                    <div class="widget widget-recent"><h3 class="widget-title">Recent Topics</h3><ul class="recent-list"><li class="recent-item"><a href="sqli.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #4D96FF, #249DFF);"></span><div class="recent-info"><span class="recent-title">SQL Injection</span></div></a></li><li class="recent-item"><a href="xss.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FFD93D);"></span><div class="recent-info"><span class="recent-title">XSS Attack</span></div></a></li></ul></div>
+                    <div class="widget widget-categories"><h3 class="widget-title">Subjects</h3><ul class="categories-list"><li><a href="../subjects/networking.html" class="category-link"><span class="category-badge">NETWORKING</span></a></li><li><a href="../subjects/cs-essentials.html" class="category-link"><span class="category-badge">CS</span></a></li><li><a href="../subjects/web-fundamentals.html" class="category-link"><span class="category-badge">WEB</span></a></li><li><a href="../subjects/pentesting.html" class="category-link"><span class="category-badge">PENTEST</span></a></li></ul></div>
+                </aside>
+                <div class="content-area">
+                    <div class="topic-page-header">
+                        <nav class="topic-breadcrumb"><a href="../index.html">Home</a> <span>&rsaquo;</span> <a href="../subjects/pentesting.html">Pentesting</a> <span>&rsaquo;</span> <span>SSRF Prevention</span></nav>
+                        <h1 class="topic-title-page">Server-Side Request Forgery (SSRF)</h1>
+                        <p class="topic-excerpt-page">SSRF tricks a server into making unintended requests to internal or external systems.</p>
+                        <div class="topic-meta"><span>6 min read</span></div>
+                    </div>
+                    <div class="topic-content">
+                        <h2>What is SSRF?</h2>
+                        <p>Server-Side Request Forgery occurs when an application fetches a URL supplied by the user without validation. The attacker can use this to probe internal services or access cloud metadata.</p>
+                        <p><strong>Analogy:</strong> A library service that fetches books from other libraries. If you can tell it "fetch from this library's internal system," you could access employee records.</p>
+
+                        <h3>SSRF Attack Flow</h3>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 500 200">
+                                <rect x="20" y="20" width="100" height="40" rx="6" fill="#9B59B6" opacity="0.9"></rect>
+                                <text x="70" y="45" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Attacker</text>
+                                <path d="M120 40 L200 40 L200 125 L280 125" stroke="#9B59B6" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="280" y="105" width="100" height="40" rx="6" fill="#3498DB" opacity="0.9"></rect>
+                                <text x="330" y="128" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Vulnerable</text>
+                                <text x="330" y="143" text-anchor="middle" fill="#eee" font-size="10">Server</text>
+                                <path d="M380 125 L460 125 L460 40 L520 40" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="520" y="20" width="100" height="40" rx="6" fill="#27AE60" opacity="0.9"></rect>
+                                <text x="570" y="43" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Internal</text>
+                            </svg>
+                        </div>
+
+                        <div class="why-this-matters">
+                            <div class="why-title">Why This Matters for Pentesting</div>
+                            <p class="why-text">SSRF can lead to cloud metadata access, internal network scanning, and port scanning. It's often a stepping stone to credential theft.</p>
+                        </div>
+
+                        <h3 class="code-header">SSRF Attack Examples</h3>
+                        <div class="code-block">
+<span class="comment"># Cloud metadata services</span><br>
+<span class="string">http://169.254.169.254/</span><br>
+<span class="comment"># Internal services</span><br>
+<span class="string">http://127.0.0.1:8080/</span><br>
+<span class="string">http://10.0.0.1/internal-api</span>
+                        </div>
+
+                        <h3>Prevention</h3>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 500 140">
+                                <rect x="10" y="10" width="480" height="40" rx="6" fill="#2F6BFF" opacity="0.1"></rect>
+                                <text x="250" y="32" text-anchor="middle" font-size="14" font-weight="bold" fill="#2F6BFF">URL Validation</text>
+                                <rect x="10" y="60" width="480" height="40" rx="6" fill="#2F6BFF" opacity="0.1"></rect>
+                                <text x="250" y="82" text-anchor="middle" font-size="14" font-weight="bold" fill="#2F6BFF">IP Blacklist</text>
+                                <text x="250" y="98" text-anchor="middle" font-size="12" fill="#666">Block 127.0.0.1, 10.x.x.x, 172.16.x.x, 192.168.x.x</text>
+                            </svg>
+                        </div>
+                        <ul>
+                            <li><strong>URL Validation:</strong> Allow only http/https, validate URL format</li>
+                            <li><strong>IP Blacklist:</strong> Block private and loopback IPs</li>
+                            <li><strong>DNS Rebinding Protection:</strong> Resolve and validate before connecting</li>
+                            <li><strong>Whitelist Domains:</strong> Only allow specific approved domains</li>
+                        </ul>
+
+                        <div class="quiz-section" id="quiz-container">
+                            <h3 class="quiz-title">Check Your Understanding</h3>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 1</div>
+                                <div class="quiz-question-text">What is the purpose of the 169.254.169.254 IP address?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1" value="0"> Public web server</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="1"> Cloud provider metadata service</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="2"> Internal database</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="3"> Load balancer</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 2</div>
+                                <div class="quiz-question-text">Which IP range represents private networks that should be blocked?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2" value="0"> 8.8.8.0/24</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="1"> 192.168.0.0/16</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="2"> 1.1.1.0/24</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="3"> 208.67.222.0/24</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-controls">
+                                <button class="btn btn-primary" id="submitQuiz">Submit Answers</button>
+                                <span class="quiz-score" id="quizScore">Score: 0/2</span>
+                            </div>
+                            <div class="quiz-feedback" id="quizFeedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4 class="footer-title">SecForAI</h4><p class="footer-desc">Security education for AI/ML engineers.</p></div>
+                <div class="footer-col"><h4 class="footer-title">Popular</h4><ul class="footer-links"><li><a href="sqli.html">SQLi</a></li><li><a href="xss.html">XSS</a></li><li><a href="csrf.html">CSRF</a></li><li><a href="ssrf.html">SSRF</a></li></ul></div>
+                <div class="footer-col"><h4 class="footer-title">About</h4><ul class="footer-links"><li><a href="../about.html">About</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p class="footer-copyright">&copy; 2026 SecForAI.</p></div>
+        </div>
+    </footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>

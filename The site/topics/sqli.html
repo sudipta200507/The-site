@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection (SQLi) | Pentesting Fundamentals</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo"><a href="../index.html"><span class="logo-icon"></span><span class="logo-text">SecForAI</span></a></div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown"><a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">Subjects</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="../subjects/networking.html">Computer Networks</a></li>
+                                <li><a href="../subjects/cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="../subjects/web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="../subjects/pentesting.html" class="active">Web App Pentesting</a></li>
+                                <li><a href="../subjects/ai.html">AI Concepts</a></li>
+                                <li><a href="../subjects/ml.html">Machine Learning</a></li>
+                                <li><a href="../subjects/dl.html">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form"><input type="search" class="search-input" placeholder="Search topics..."><button type="submit" class="search-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button></form>
+                    <button class="theme-toggle" id="themeToggle"><svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg><svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content topic-page">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <div class="widget widget-search"><h3 class="widget-title">Search Topics</h3><input type="search" class="widget-search-input" placeholder="Find a topic..."></div>
+                    <div class="widget widget-quote"><div class="quote-content"><p class="quote-text">"The safest code is code you never write. Validation and sanitization are your first lines of defense."</p></div></div>
+                    <div class="widget widget-recent"><h3 class="widget-title">Recent Topics</h3><ul class="recent-list"><li class="recent-item"><a href="xss.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FFD93D);"></span><div class="recent-info"><span class="recent-title">XSS Attack</span><span class="recent-meta">Web Security</span></div></a></li><li class="recent-item"><a href="csrf.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #6C5CE7, #A29BFE);"></span><div class="recent-info"><span class="recent-title">CSRF Protection</span><span class="recent-meta">Authentication</span></div></a></li></ul></div>
+                    <div class="widget widget-categories"><h3 class="widget-title">Subjects</h3><ul class="categories-list"><li><a href="../subjects/networking.html" class="category-link"><span class="category-badge">NETWORKING</span> <span class="category-count">12 Topics</span></a></li><li><a href="../subjects/cs-essentials.html" class="category-link"><span class="category-badge">CS</span> <span class="category-count">8 Topics</span></a></li><li><a href="../subjects/web-fundamentals.html" class="category-link"><span class="category-badge">WEB</span> <span class="category-count">10 Topics</span></a></li><li><a href="../subjects/pentesting.html" class="category-link"><span class="category-badge">PENTEST</span> <span class="category-count">15 Topics</span></a></li></ul></div>
+                </aside>
+                <div class="content-area">
+                    <div class="topic-page-header">
+                        <nav class="topic-breadcrumb"><a href="../index.html">Home</a> <span>&rsaquo;</span> <a href="../subjects/pentesting.html">Pentesting</a> <span>&rsaquo;</span> <span>SQL Injection</span></nav>
+                        <h1 class="topic-title-page">SQL Injection (SQLi)</h1>
+                        <p class="topic-excerpt-page">SQL Injection is a code injection technique that allows attackers to interfere with the queries that an application makes to its database. It remains one of the most dangerous and common web application vulnerabilities.</p>
+                        <div class="topic-meta"><span>8 min read</span> <span>Updated: July 2026</span></div>
+                    </div>
+                    <div class="topic-content">
+                        <h2>What is SQL Injection?</h2>
+                        <p>SQL Injection (SQLi) occurs when user input is directly concatenated into SQL queries without proper sanitization or parameterization. This allows attackers to modify the query structure and execute arbitrary SQL commands.</p>
+                        <p><strong>Analogy:</strong> Think of a SQL query as a recipe with placeholders for ingredients. If you don't properly secure the ingredient slots, someone could slip in poison or a different recipe entirely - and the cook (database) would have no way to tell the difference.</p>
+
+                        <h3>How SQLi Works</h3>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 600 200">
+                                <rect x="20" y="80" width="100" height="40" rx="4" fill="#FF6B6B" opacity="0.9"></rect>
+                                <text x="70" y="100" text-anchor="middle" fill="white" font-size="12" font-weight="bold">User Input</text>
+                                <text x="70" y="115" text-anchor="middle" fill="#eee" font-size="10">" OR 1=1 --</text>
+                                <path d="M120 100 L200 100 L200 60 L280 60" stroke="#FF6B6B" stroke-width="2" marker-end="url(#arrow)" opacity="0.7"/>
+                                <rect x="280" y="40" width="140" height="40" rx="4" fill="#E74C3C" opacity="0.8"></rect>
+                                <text x="350" y="65" text-anchor="middle" fill="white" font-size="11">app.query("SELECT * FROM users WHERE username = '" + input + "'")</text>
+                                <path d="M420 60 L500 60 L500 140 L560 140" stroke="#27AE60" stroke-width="2" marker-end="url(#arrow)" opacity="0.7"/>
+                                <rect x="560" y="120" width="100" height="40" rx="4" fill="#27AE60" opacity="0.9"></rect>
+                                <text x="610" y="140" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Database</text>
+                                <text x="610" y="155" text-anchor="middle" fill="#eee" font-size="10">Returns all users</text>
+                                <rect x="20" y="140" width="580" height="40" rx="4" fill="#2F6BFF" opacity="0.1"></rect>
+                                <text x="300" y="165" text-anchor="middle" fill="#2F6BFF" font-size="12" font-weight="bold">The attacker's input changes the query logic</text>
+                            </svg>
+                        </div>
+
+                        <h3 class="code-header">Vulnerable Code Example</h3>
+                        <div class="code-comparison">
+                            <div class="code-column vulnerable">
+                                <div class="code-column-title">VULNERABLE</div>
+                                <div class="code-block">
+<span class="comment">// Python/Flask example</span><br>
+<span class="keyword">def</span> <span class="function">get_user</span>(username):<br>
+&nbsp;&nbsp;query = <span class="string">"SELECT * FROM users WHERE username = '"</span> + username + <span class="string">"'"</span><br>
+&nbsp;&nbsp;cursor.execute(query)<br>
+&nbsp;&nbsp;<span class="keyword">return</span> cursor.fetchall()
+                                </div>
+                                <p><strong>Problem:</strong> The username parameter is directly concatenated into the SQL string.</p>
+                            </div>
+                            <div class="code-column safe">
+                                <div class="code-column-title">SAFE (FIXED)</div>
+                                <div class="code-block">
+<span class="comment">// Using parameterized queries</span><br>
+<span class="keyword">def</span> <span class="function">get_user</span>(username):<br>
+&nbsp;&nbsp;cursor.execute(<span class="string">"SELECT * FROM users WHERE username = ?"</span>, (username,))<br>
+&nbsp;&nbsp;<span class="keyword">return</span> cursor.fetchall()
+                                </div>
+                                <p><strong>Fix:</strong> Use parameterized/prepared statements.</p>
+                            </div>
+                        </div>
+
+                        <div class="why-this-matters">
+                            <div class="why-title">Why This Matters for Pentesting</div>
+                            <p class="why-text">SQL Injection is consistently ranked as the #1 most dangerous web application vulnerability because it can lead to data exfiltration, data manipulation, and authentication bypass.</p>
+                        </div>
+
+                        <h3 class="code-header">Common SQLi Attack Patterns</h3>
+                        <div class="code-block">
+<span class="comment"># Union-based attack</span><br>
+<span class="string">' UNION SELECT username, password FROM users --</span><br>
+<span class="comment"># Boolean-based blind</span><br>
+<span class="string">' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE id=1) = 'a' --</span><br>
+<span class="comment"># Time-based blind</span><br>
+<span class="string">' AND (SELECT CASE WHEN (1=1) THEN WAITFOR DELAY '0:0:5' ELSE '' END) --</span>
+                        </div>
+
+                        <h3>Testing for SQL Injection</h3>
+                        <div class="code-block">
+<span class="comment"># Basic test</span><br>
+<span class="string">'</span><br>
+<span class="comment"># OR injection</span><br>
+<span class="string">' OR '1'='1</span><br>
+<span class="comment"># Comment injection</span><br>
+<span class="string">' OR 1=1 --</span>
+                        </div>
+
+                        <h3>Prevention Best Practices</h3>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 500 160">
+                                <rect x="10" y="10" width="480" height="50" rx="6" fill="#2F6BFF" opacity="0.1"></rect>
+                                <text x="250" y="32" text-anchor="middle" font-size="12" font-weight="bold" fill="#2F6BFF">Use Parameterized Queries</text>
+                                <text x="250" y="48" text-anchor="middle" font-size="10" fill="#666">Always use prepared statements with placeholders</text>
+                                <rect x="10" y="70" width="480" height="50" rx="6" fill="#2F6BFF" opacity="0.1"></rect>
+                                <text x="250" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#2F6BFF">Input Validation</text>
+                                <text x="250" y="108" text-anchor="middle" font-size="10" fill="#666">Whitelist expected input patterns</text>
+                            </svg>
+                        </div>
+                        <ul>
+                            <li><strong>Parameterized Queries:</strong> Always use prepared statements with placeholders</li>
+                            <li><strong>Input Validation:</strong> Whitelist expected input patterns</li>
+                            <li><strong>Least Privilege:</strong> Database user should have minimal necessary permissions</li>
+                        </ul>
+
+                        <h3>OWASP Reference</h3>
+                        <p>SQL Injection is #1 on the <a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10</a> list.</p>
+
+                        <div class="quiz-section" id="quiz-container">
+                            <h3 class="quiz-title">Check Your Understanding</h3>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 1</div>
+                                <div class="quiz-question-text">What makes SQL Injection possible?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q1" value="0"> User input is properly escaped</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="1"> User input is directly concatenated into SQL queries</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="2"> Database servers have no security features</label>
+                                    <label class="quiz-option"><input type="radio" name="q1" value="3"> SQL is an outdated language</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 2</div>
+                                <div class="quiz-question-text">Which of these is an example of a safe approach?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q2" value="0"> String concatenation for query building</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="1"> Stored procedures with concatenated strings</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="2"> Parameterized/prepared statements</label>
+                                    <label class="quiz-option"><input type="radio" name="q2" value="3"> Escaping special characters manually</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-question">
+                                <div class="quiz-question-number">Question 3</div>
+                                <div class="quiz-question-text">What does the 'OR 1=1' trick do in an SQL injection attack?</div>
+                                <div class="quiz-options">
+                                    <label class="quiz-option"><input type="radio" name="q3" value="0"> Updates all records with value 1</label>
+                                    <label class="quiz-option"><input type="radio" name="q3" value="1"> Always evaluates to true, bypassing the WHERE clause</label>
+                                    <label class="quiz-option"><input type="radio" name="q3" value="2"> Creates a new database table named '1'</label>
+                                    <label class="quiz-option"><input type="radio" name="q3" value="3"> Deletes the entire database</label>
+                                </div>
+                                <div class="quiz-feedback"></div>
+                            </div>
+                            <div class="quiz-controls">
+                                <button class="btn btn-primary" id="submitQuiz">Submit Answers</button>
+                                <span class="quiz-score" id="quizScore">Score: 0/3</span>
+                            </div>
+                            <div class="quiz-feedback" id="quizFeedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4 class="footer-title">SecForAI</h4><p class="footer-desc">Security education for AI/ML engineers.</p></div>
+                <div class="footer-col"><h4 class="footer-title">Subjects</h4><ul class="footer-links"><li><a href="../subjects/networking.html">Computer Networks</a></li><li><a href="../subjects/cs-essentials.html">CS Essentials</a></li><li><a href="../subjects/web-fundamentals.html">Web Fundamentals</a></li><li><a href="../subjects/pentesting.html">Web App Pentesting</a></li></ul></div>
+                <div class="footer-col"><h4 class="footer-title">Popular Topics</h4><ul class="footer-links"><li><a href="sqli.html">SQL Injection</a></li><li><a href="xss.html">XSS</a></li><li><a href="csrf.html">CSRF</a></li><li><a href="ssrf.html">SSRF</a></li></ul></div>
+                <div class="footer-col"><h4 class="footer-title">About</h4><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../contact.html">Contact</a></li></ul></div>
+            </div>
+            <div class="footer-bottom"><p class="footer-copyright">&copy; 2026 SecForAI. Built for offline learning.</p></div>
+        </div>
+    </footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>

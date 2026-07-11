@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Networks | Pentesting Fundamentals</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="../index.html">
+                        <span class="logo-icon"></span>
+                        <span class="logo-text">SecForAI</span>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">
+                                Subjects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="subjectsDropdown">
+                                <li><a href="networking.html" class="active">Computer Networks</a></li>
+                                <li><a href="cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="pentesting.html">Web App Pentesting</a></li>
+                                <li><a href="ai.html">AI Concepts</a></li>
+                                <li><a href="ml.html">Machine Learning</a></li>
+                                <li><a href="dl.html">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <form class="search-form" action="#" method="GET">
+                        <input type="search" class="search-input" placeholder="Search topics...">
+                        <button type="submit" class="search-btn" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                        </svg>
+                        <svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <div class="widget widget-search">
+                        <h3 class="widget-title">Search Topics</h3>
+                        <input type="search" class="widget-search-input" placeholder="Find a topic...">
+                    </div>
+
+                    <div class="widget widget-quote">
+                        <div class="quote-content">
+                            <p class="quote-text">
+                                "Network security is not about preventing all attacks, but about making attacks so hard they're not worth the effort."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="widget widget-recent">
+                        <h3 class="widget-title">Recent Topics</h3>
+                        <ul class="recent-list">
+                            <li class="recent-item">
+                                <a href="../../topics/tcp-ip.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #00C4CC, #36D1DC);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">TCP/IP Model</span>
+                                        <span class="recent-meta">Networking</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="recent-item">
+                                <a href="../../topics/osi-model.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #009688, #26A69A);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">OSI Model Layers</span>
+                                        <span class="recent-meta">Networking</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="recent-item">
+                                <a href="../../topics/http-https.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FF9F43);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">HTTP vs HTTPS</span>
+                                        <span class="recent-meta">Web Security</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="widget widget-categories">
+                        <h3 class="widget-title">Subjects</h3>
+                        <ul class="categories-list">
+                            <li><a href="networking.html" class="category-link">
+                                <span class="category-badge category-badge--networking">NETWORKING</span>
+                                <span class="category-count">12 Topics</span>
+                            </a></li>
+                            <li><a href="../cs-essentials.html" class="category-link">
+                                <span class="category-badge category-badge--cs">CS</span>
+                                <span class="category-count">8 Topics</span>
+                            </a></li>
+                            <li><a href="../web-fundamentals.html" class="category-link">
+                                <span class="category-badge category-badge--web">WEB</span>
+                                <span class="category-count">10 Topics</span>
+                            </a></li>
+                            <li><a href="../pentesting.html" class="category-link">
+                                <span class="category-badge category-badge--pentest">PENTEST</span>
+                                <span class="category-count">15 Topics</span>
+                            </a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <div class="content-area">
+                    <div class="topic-page-header">
+                        <nav class="topic-breadcrumb">
+                            <a href="../index.html">Home</a>
+                            <span>&rsaquo;</span>
+                            <a href="#">Subjects</a>
+                            <span>&rsaquo;</span>
+                            <span>Computer Networks</span>
+                        </nav>
+                        <h1 class="topic-title-page">Computer Networks</h1>
+                        <p class="topic-excerpt-page">
+                            Understand the foundational concepts of computer networks - from the OSI model to TCP/IP, HTTP/HTTPS, DNS, and network security. These concepts are essential for any pentester to understand how data flows and where vulnerabilities can exist.
+                        </p>
+                        <div class="topic-meta">
+                            <span>12 Topics</span>
+                            <span>45 min read</span>
+                            <span>Last updated: July 2026</span>
+                        </div>
+                    </div>
+
+                    <div class="topic-content">
+                        <h2>What This Section Covers</h2>
+                        <p>This section provides a comprehensive overview of computer networking concepts that are crucial for understanding web application security and penetration testing.</p>
+
+                        <div class="topics-grid" style="margin-top: 32px;">
+                            <!-- OSI Model -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #00C4CC, #36D1DC);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5 10 5 10-5-5-2.5-5 2.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/osi-model.html">OSI Model</a></h3>
+                                    <p class="topic-excerpt">The 7-layer model for understanding network communication - Physical, Data Link, Network, Transport, Session, Presentation, Application.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">4 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- TCP/IP -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #009688, #26A69A);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M2 12h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2zm20 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM12 2v2a2 2 0 0 1 2 2h2a2 2 0 0 1-2 2H10a2 2 0 0 1 2-2V4a2 2 0 0 1-2-2zm0 20v-2a2 2 0 0 0-2-2H10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/tcp-ip.html">TCP/IP Model</a></h3>
+                                    <p class="topic-excerpt">The practical model used on the internet - four layers including TCP, UDP, IP, and routing protocols.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">6 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- HTTP/HTTPS -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FF9F43);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--web">WEB</span>
+                                    <h3 class="topic-title"><a href="../../topics/http-https.html">HTTP vs HTTPS</a></h3>
+                                    <p class="topic-excerpt">Understanding the differences between HTTP and HTTPS, SSL/TLS encryption, and certificate validation.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">8 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- DNS -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #4D96FF, #249DFF);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/dns.html">DNS Basics</a></h3>
+                                    <p class="topic-excerpt">How domain name resolution works, DNS record types, and DNS-based attack vectors.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">5 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Ports -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #9C27B0, #AB47BC);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H4V4h16v16zM7 9h10v2H7zm0 4h7v2H7z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/ports.html">Network Ports</a></h3>
+                                    <p class="topic-excerpt">Understanding port numbers, common port services (22, 80, 443, etc.), and port scanning techniques.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">4 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Firewalls -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #E64A19, #FF5722);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 18c-3.31 0-6-2.69-6-6 0-2.98 2.17-5.43 5-5.9V4l6 2.25V12c0 3.31-2.69 6-6 6z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/firewalls.html">Firewalls</a></h3>
+                                    <p class="topic-excerpt">How firewalls filter network traffic, types of firewalls, and how to test firewall configurations.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">6 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Proxies -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #006064, #00838F);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v2h-2zm0 4h2v6h-2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/proxies.html">Proxies</a></h3>
+                                    <p class="topic-excerpt">Forward and reverse proxies, how they work, and their role in pentesting and security testing.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">5 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Sockets -->
+                            <article class="topic-card">
+                                <div class="card-thumb" style="background: linear-gradient(135deg, #5D4037, #795548);">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.5-.5 1.25-.5 1.75 0s.5 1.25 0 1.75zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"></path>
+                                    </svg>
+                                </div>
+                                <div class="card-content">
+                                    <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                    <h3 class="topic-title"><a href="../../topics/sockets.html">Sockets</a></h3>
+                                    <p class="topic-excerpt">Understanding network sockets, TCP vs UDP socket programming, and socket-based attacks.</p>
+                                    <div class="topic-meta">
+                                        <span class="topic-items">7 min read</span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="quiz-section" id="quiz-container">
+                            <h3 class="quiz-title">Check Your Understanding</h3>
+                            <p>Test your knowledge of networking fundamentals before moving to the next section.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-title">SecForAI</h4>
+                    <p class="footer-desc">
+                        Learning platform for AI/ML engineers transitioning to security roles.
+                        Built with love for security education.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Subjects</h4>
+                    <ul class="footer-links">
+                        <li><a href="networking.html">Computer Networks</a></li>
+                        <li><a href="../cs-essentials.html">CS Essentials</a></li>
+                        <li><a href="../web-fundamentals.html">Web Fundamentals</a></li>
+                        <li><a href="../pentesting.html">Web App Pentesting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="../../topics/sqli.html">SQL Injection</a></li>
+                        <li><a href="../../topics/xss.html">Cross-Site Scripting</a></li>
+                        <li><a href="../../topics/csrf.html">CSRF Protection</a></li>
+                        <li><a href="../../topics/ssrf.html">SSRF Prevention</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 SecForAI. All rights reserved. Built for offline learning.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

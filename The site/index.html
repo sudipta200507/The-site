@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pentesting Fundamentals | Learn Web Security</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="Learn foundational and web application pentesting concepts for AI/ML engineers">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-icon"></span>
+                        <span class="logo-text">SecForAI</span>
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">
+                                Subjects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="subjectsDropdown">
+                                <li><a href="subjects/networking.html">Computer Networks</a></li>
+                                <li><a href="subjects/cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="subjects/web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="subjects/pentesting.html">Web App Pentesting</a></li>
+                                <li><a href="subjects/ai.html">AI Concepts</a></li>
+                                <li><a href="subjects/ml.html">Machine Learning</a></li>
+                                <li><a href="subjects/dl.html">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <form class="search-form" action="#" method="GET">
+                        <input type="search" class="search-input" placeholder="Search topics..." id="searchInput">
+                        <button type="submit" class="search-btn" aria-label="Search">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                        </svg>
+                        <svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">For AI/ML Engineers</span>
+                <h1 class="hero-title">Master Web Application Pentesting</h1>
+                <p class="hero-desc">
+                    Learn security fundamentals, network concepts, and web app vulnerabilities
+                    through interactive lessons. Built for the AI/ML engineer transitioning to security.
+                </p>
+                <div class="hero-actions">
+                    <a href="#subjects-grid" class="btn btn-primary">Browse Topics</a>
+                    <a href="subjects/pentesting.html" class="btn btn-secondary">Start Pentesting</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Search Widget -->
+                    <div class="widget widget-search">
+                        <h3 class="widget-title">Search Topics</h3>
+                        <input type="search" class="widget-search-input" id="widgetSearch" placeholder="Find a topic...">
+                    </div>
+
+                    <!-- Quote Widget -->
+                    <div class="widget widget-quote">
+                        <div class="quote-content">
+                            <svg class="quote-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.929c1.605-1.364 2.917-3.289 2.917-5.649 0-2.849-1.897-5.104-4.655-5.104-2.725 0-4.655 2.255-4.655 5.104H5.517C5.517 8.104 7.53 4.638 10.966 4.638 15.364 4.638 19 7.949 19 12.374c0 3.236-2.035 5.858-4.983 5.858H14.017zM9.5 19c0 1.654-1.119 3-2.5 3s-2.5-1.346-2.5-3h5z"></path>
+                                <path d="M4.5 19c0 1.654-1.119 3-2.5 3s-2.5-1.346-2.5-3h5z"></path>
+                            </svg>
+                            <p class="quote-text">
+                                "Security is a process, not a product. Always test your assumptions."
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Recent Topics Widget -->
+                    <div class="widget widget-recent">
+                        <h3 class="widget-title">Recent Topics</h3>
+                        <ul class="recent-list">
+                            <li class="recent-item">
+                                <a href="topics/xss.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FFD93D);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">XSS Attack</span>
+                                        <span class="recent-meta">Web Security</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="recent-item">
+                                <a href="topics/sqli.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #4D96FF, #249DFF);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">SQL Injection</span>
+                                        <span class="recent-meta">Database Security</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="recent-item">
+                                <a href="topics/crf.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #6C5CE7, #A29BFE);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">CSRF Protection</span>
+                                        <span class="recent-meta">Authentication</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="recent-item">
+                                <a href="topics/ssrf.html" class="recent-link">
+                                    <span class="recent-thumb" style="background: linear-gradient(135deg, #00CEC9, #63F7EF);"></span>
+                                    <div class="recent-info">
+                                        <span class="recent-title">SSRF Attack</span>
+                                        <span class="recent-meta">Network Security</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Subjects Widget -->
+                    <div class="widget widget-categories">
+                        <h3 class="widget-title">Subjects</h3>
+                        <ul class="categories-list">
+                            <li><a href="subjects/networking.html" class="category-link">
+                                <span class="category-badge category-badge--networking">NETWORKING</span>
+                                <span class="category-count">12 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/cs-essentials.html" class="category-link">
+                                <span class="category-badge category-badge--cs">CS</span>
+                                <span class="category-count">8 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/web-fundamentals.html" class="category-link">
+                                <span class="category-badge category-badge--web">WEB</span>
+                                <span class="category-count">10 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/pentesting.html" class="category-link">
+                                <span class="category-badge category-badge--pentest">PENTEST</span>
+                                <span class="category-count">15 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/ai.html" class="category-link">
+                                <span class="category-badge category-badge--ai">AI</span>
+                                <span class="category-count">6 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/ml.html" class="category-link">
+                                <span class="category-badge category-badge--ml">ML</span>
+                                <span class="category-count">8 Topics</span>
+                            </a></li>
+                            <li><a href="subjects/dl.html" class="category-link">
+                                <span class="category-badge category-badge--dl">DL</span>
+                                <span class="category-count">6 Topics</span>
+                            </a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- Content Area -->
+                <div class="content-area">
+                    <h2 class="section-title">Subject Categories</h2>
+
+                    <!-- Subjects Grid -->
+                    <div class="topics-grid" id="subjects-grid">
+                        <!-- Computer Networks -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #00C4CC, #36D1DC);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M2 12h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2zm20 0h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM12 2v2a2 2 0 0 1 2 2h2a2 2 0 0 1-2 2H10a2 2 0 0 1 2-2V4a2 2 0 0 1-2-2zm0 20v-2a2 2 0 0 0-2-2H10a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zM8.5 8.5l-1.5 1.5 2 2 1.5-1.5-2-2zm7 7l-1.5 1.5 2 2 1.5-1.5-2-2zM8.5 15.5l-1.5-1.5 2-2 1.5 1.5-2 2zm7-7l-1.5-1.5 2-2 1.5 1.5-2 2z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--networking">NETWORKING</span>
+                                <h3 class="topic-title"><a href="subjects/networking.html">Computer Networks</a></h3>
+                                <p class="topic-excerpt">Understand the OSI model, TCP/IP, HTTP/HTTPS, DNS, and network security concepts essential for pentesting.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">12 Topics</span>
+                                    <span class="topic-read-time">45 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- CS Essentials -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #FF6B6B, #FFD93D);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5 14H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2z"></path>
+                                    <path d="M12 12H8v-2h4v2zm4 4H8v-2h8v2zm0-4H8V8h8v2z"></path>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--cs">CS</span>
+                                <h3 class="topic-title"><a href="subjects/cs-essentials.html">Computer Science Essentials</a></h3>
+                                <p class="topic-excerpt">Data structures, algorithms, OS basics, memory management, and databases - the foundation for understanding security.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">8 Topics</span>
+                                    <span class="topic-read-time">35 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Web Fundamentals -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #4D96FF, #249DFF);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--web">WEB</span>
+                                <h3 class="topic-title"><a href="subjects/web-fundamentals.html">Web Fundamentals</a></h3>
+                                <p class="topic-excerpt">HTML, CSS, JavaScript basics, client-server model, cookies, sessions, REST APIs, and authentication concepts.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">10 Topics</span>
+                                    <span class="topic-read-time">40 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Web App Pentesting -->
+                        <article class="topic-card" style="border: 2px solid #2F6BFF;">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #6C5CE7, #A29BFE);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--pentest">PENTEST</span>
+                                <h3 class="topic-title"><a href="subjects/pentesting.html">Web App Pentesting</a></h3>
+                                <p class="topic-excerpt">OWASP Top 10 vulnerabilities: SQL injection, XSS, CSRF, SSRF, IDOR, and more - with code examples and fixes.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">15 Topics</span>
+                                    <span class="topic-read-time">60 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- AI Concepts -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #00CEC9, #63F7EF);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5-9h10v2H7v-2zm0 4h10v2H7v-2z"></path>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--ai">AI</span>
+                                <h3 class="topic-title"><a href="subjects/ai.html">AI Concepts</a></h3>
+                                <p class="topic-excerpt">Introduction to AI, history, use-cases, and key terminology for understanding AI security considerations.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">6 Topics</span>
+                                    <span class="topic-read-time">30 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Machine Learning -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #FF9F43, #FFD93D);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-5 14H7v-2h7v2zm0-4H7v-2h7v2zm0-4H7V7h7v2z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--ml">ML</span>
+                                <h3 class="topic-title"><a href="subjects/ml.html">Machine Learning</a></h3>
+                                <p class="topic-excerpt">Supervised/unsupervised learning, key algorithms, workflow, and evaluation metrics for security applications.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">8 Topics</span>
+                                    <span class="topic-read-time">45 min read</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Deep Learning -->
+                        <article class="topic-card">
+                            <div class="card-thumb" style="background: linear-gradient(135deg, #2E86C1, #5DADE2);">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                                    <circle cx="12" cy="5" r="2"></circle>
+                                    <circle cx="6" cy="9" r="2"></circle>
+                                    <circle cx="18" cy="9" r="2"></circle>
+                                    <circle cx="12" cy="13" r="2"></circle>
+                                    <circle cx="6" cy="17" r="2"></circle>
+                                    <circle cx="18" cy="17" r="2"></circle>
+                                    <path d="M12 7v4M6 11l6 2 6-2M6 15l6 2 6-2"></path>
+                                </svg>
+                            </div>
+                            <div class="card-content">
+                                <span class="topic-tag topic-tag--dl">DL</span>
+                                <h3 class="topic-title"><a href="subjects/dl.html">Deep Learning</a></h3>
+                                <p class="topic-excerpt">Neural networks, CNNs, RNNs, transformers, and training process - essential for AI security.</p>
+                                <div class="topic-meta">
+                                    <span class="topic-items">6 Topics</span>
+                                    <span class="topic-read-time">50 min read</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Popular Modules Strip -->
+                    <div class="popular-modules">
+                        <h3 class="modules-title">Popular Learning Modules</h3>
+                        <div class="modules-list">
+                            <a href="subjects/pentesting.html" class="module-item">
+                                <span class="module-icon">🛡️</span>
+                                <span class="module-name">Web App Pentesting</span>
+                            </a>
+                            <a href="topics/sqli.html" class="module-item">
+                                <span class="module-icon">📊</span>
+                                <span class="module-name">SQL Injection</span>
+                            </a>
+                            <a href="topics/xss.html" class="module-item">
+                                <span class="module-icon">⚡</span>
+                                <span class="module-name">XSS Attacks</span>
+                            </a>
+                            <a href="topics/csrf.html" class="module-item">
+                                <span class="module-icon">🔗</span>
+                                <span class="module-name">CSRF Protection</span>
+                            </a>
+                            <a href="topics/ssrf.html" class="module-item">
+                                <span class="module-icon">🌐</span>
+                                <span class="module-name">SSRF Prevention</span>
+                            </a>
+                            <a href="topics/idor.html" class="module-item">
+                                <span class="module-icon">🔑</span>
+                                <span class="module-name">IDOR Defense</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Currently Learning Strip -->
+                    <div class="currently-learning">
+                        <h3 class="learning-title">Currently Learning</h3>
+                        <div class="learning-list">
+                            <div class="learning-item">
+                                <div class="learning-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%;"></div>
+                                    </div>
+                                    <div class="learning-info">
+                                        <span class="learning-name">Introduction to Networking</span>
+                                        <span class="learning-percent">45%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="learning-item">
+                                <div class="learning-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 20%;"></div>
+                                    </div>
+                                    <div class="learning-info">
+                                        <span class="learning-name">OWASP Top 10 Overview</span>
+                                        <span class="learning-percent">20%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="learning-item">
+                                <div class="learning-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 75%;"></div>
+                                    </div>
+                                    <div class="learning-info">
+                                        <span class="learning-name">Web Application Architecture</span>
+                                        <span class="learning-percent">75%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-title">SecForAI</h4>
+                    <p class="footer-desc">
+                        Learning platform for AI/ML engineers transitioning to security roles.
+                        Built with love for security education.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Subjects</h4>
+                    <ul class="footer-links">
+                        <li><a href="subjects/networking.html">Computer Networks</a></li>
+                        <li><a href="subjects/cs-essentials.html">CS Essentials</a></li>
+                        <li><a href="subjects/web-fundamentals.html">Web Fundamentals</a></li>
+                        <li><a href="subjects/pentesting.html">Web App Pentesting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">Popular Topics</h4>
+                    <ul class="footer-links">
+                        <li><a href="topics/sqli.html">SQL Injection</a></li>
+                        <li><a href="topics/xss.html">Cross-Site Scripting</a></li>
+                        <li><a href="topics/csrf.html">CSRF Protection</a></li>
+                        <li><a href="topics/ssrf.html">Server-Side Request Forgery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2026 SecForAI. All rights reserved. Built for offline learning.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning | Pentesting Fundamentals</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo"><a href="../index.html"><span class="logo-icon"></span><span class="logo-text">SecForAI</span></a></div>
+                <nav class="main-nav">
+                    <ul class="nav-list">
+                        <li><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown"><a href="#" class="nav-link dropdown-toggle" id="subjectsDropdown">Subjects</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="networking.html">Computer Networks</a></li>
+                                <li><a href="cs-essentials.html">CS Essentials</a></li>
+                                <li><a href="web-fundamentals.html">Web Fundamentals</a></li>
+                                <li><a href="pentesting.html">Web App Pentesting</a></li>
+                                <li><a href="ai.html">AI Concepts</a></li>
+                                <li><a href="ml.html">Machine Learning</a></li>
+                                <li><a href="dl.html" class="active">Deep Learning</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../about.html">About</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <form class="search-form"><input type="search" class="search-input" placeholder="Search topics..."><button type="submit" class="search-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg></button></form>
+                    <button class="theme-toggle" id="themeToggle"><svg class="icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg><svg class="icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <aside class="sidebar">
+                    <div class="widget widget-search"><h3 class="widget-title">Search Topics</h3><input type="search" class="widget-search-input" placeholder="Find a topic..."></div>
+                    <div class="widget widget-quote"><div class="quote-content"><p class="quote-text">"Deep learning models are like black boxes - powerful but potentially unpredictable. Understanding their structure helps identify vulnerabilities."</p></div></div>
+                    <div class="widget widget-recent"><h3 class="widget-title">Recent Topics</h3><ul class="recent-list"><li class="recent-item"><a href="../topics/dl-basics.html" class="recent-link"><span class="recent-thumb" style="background: linear-gradient(135deg, #2E86C1, #5DADE2);"></span><div class="recent-info"><span class="recent-title">DL Fundamentals</span><span class="recent-meta">DL</span></div></a></li></ul></div>
+                    <div class="widget widget-categories"><h3 class="widget-title">Subjects</h3><ul class="categories-list"><li><a href="networking.html" class="category-link"><span class="category-badge">NETWORKING</span> <span class="category-count">12 Topics</span></a></li><li><a href="cs-essentials.html" class="category-link"><span class="category-badge">CS</span> <span class="category-count">8 Topics</span></a></li><li><a href="web-fundamentals.html" class="category-link"><span class="category-badge">WEB</span> <span class="category-count">10 Topics</span></a></li><li><a href="pentesting.html" class="category-link"><span class="category-badge">PENTEST</span> <span class="category-count">15 Topics</span></a></li></ul></div>
+                </aside>
+                <div class="content-area">
+                    <div class="topic-page-header"><nav class="topic-breadcrumb"><a href="../index.html">Home</a> <span>&rsaquo;</span> <span>Deep Learning</span></nav><h1 class="topic-title-page">Deep Learning</h1><p class="topic-excerpt-page">Neural networks, CNNs, RNNs, transformers, and the training process. Essential for understanding modern AI security challenges.</p><div class="topic-meta"><span>6 Topics</span> <span>50 min read</span></div></div>
+                    <div class="topic-content">
+                        <h2>Deep Learning Fundamentals</h2>
+                        <p>Deep learning has revolutionized AI, enabling breakthroughs in computer vision, NLP, and more. Understanding these concepts is crucial for securing modern AI systems and detecting deep learning-based attacks.</p>
+                        <div class="diagram-container">
+                            <svg class="diagram-svg" viewBox="0 0 500 250">
+                                <text x="250" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#333">Neural Network Architecture</text>
+                                <rect x="40" y="60" width="80" height="130" rx="8" fill="#2F6BFF" opacity="0.9"></rect>
+                                <text x="80" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Input</text>
+                                <text x="80" y="100" text-anchor="middle" fill="#ddd" font-size="10">Layer</text>
+                                <line x1="120" y1="125" x2="160" y2="125" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="160" y="60" width="80" height="130" rx="8" fill="#6C5CE7" opacity="0.9"></rect>
+                                <text x="200" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Hidden</text>
+                                <text x="200" y="100" text-anchor="middle" fill="#ddd" font-size="10">Layer</text>
+                                <line x1="240" y1="125" x2="280" y2="125" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="280" y="60" width="80" height="130" rx="8" fill="#FF6B6B" opacity="0.9"></rect>
+                                <text x="320" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Hidden</text>
+                                <text x="320" y="100" text-anchor="middle" fill="#ddd" font-size="10">Layer</text>
+                                <line x1="360" y1="125" x2="400" y2="125" stroke="#999" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="400" y="60" width="80" height="130" rx="8" fill="#28a745" opacity="0.9"></rect>
+                                <text x="440" y="80" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Output</text>
+                                <text x="440" y="100" text-anchor="middle" fill="#ddd" font-size="10">Layer</text>
+                            </svg>
+                        </div>
+                        <div class="topics-grid" style="margin-top: 32px;">
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #2E86C1, #5DADE2);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/dl-basics.html">Neural Networks</a></h3><p class="topic-excerpt">How artificial neurons work, activation functions, and building basic neural networks.</p><div class="topic-meta"><span class="topic-items">6 min read</span></div></div></article>
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #00CEC9, #63F7EF);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/cnns.html">Convolutional Neural Networks (CNNs)</a></h3><p class="topic-excerpt">Image processing, feature extraction, and how CNNs revolutionized computer vision.</p><div class="topic-meta"><span class="topic-items">7 min read</span></div></div></article>
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #F39C12, #E67E22);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/rnns.html">Recurrent Neural Networks (RNNs)</a></h3><p class="topic-excerpt">Sequence modeling, LSTMs, and processing time-series and text data.</p><div class="topic-meta"><span class="topic-items">6 min read</span></div></div></article>
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #9B59B6, #8E44AD);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/transformers.html">Transformers</a></h3><p class="topic-excerpt">Attention mechanisms, self-attention, and how models like GPT and BERT work.</p><div class="topic-meta"><span class="topic-items">8 min read</span></div></div></article>
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #3498DB, #2980B9);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/training.html">Model Training</a></h3><p class="topic-excerpt">Loss functions, gradient descent, backpropagation, and hyperparameter tuning.</p><div class="topic-meta"><span class="topic-items">7 min read</span></div></div></article>
+                            <article class="topic-card"><div class="card-thumb" style="background: linear-gradient(135deg, #E74C3C, #C0392B);"></div><div class="card-content"><span class="topic-tag">DL</span><h3 class="topic-title"><a href="../topics/dl-security.html">Deep Learning Security</a></h3><p class="topic-excerpt">Model inversion, membership inference, and adversarial examples against DL systems.</p><div class="topic-meta"><span class="topic-items">8 min read</span></div></div></article>
+                        </div>
+                        <div class="quiz-section" id="quiz-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4 class="footer-title">SecForAI</h4><p class="footer-desc">Security education for AI/ML engineers.</p></div><div class="footer-col"><h4 class="footer-title">Subjects</h4><ul class="footer-links"><li><a href="networking.html">Computer Networks</a></li><li><a href="cs-essentials.html">CS Essentials</a></li><li><a href="web-fundamentals.html">Web Fundamentals</a></li><li><a href="pentesting.html">Web App Pentesting</a></li></ul></div><div class="footer-col"><h4 class="footer-title">Popular Topics</h4><ul class="footer-links"><li><a href="../topics/sqli.html">SQL Injection</a></li><li><a href="../topics/xss.html">XSS</a></li><li><a href="../topics/csrf.html">CSRF</a></li><li><a href="../topics/ssrf.html">SSRF</a></li></ul></div><div class="footer-col"><h4 class="footer-title">About</h4><ul class="footer-links"><li><a href="../about.html">About Us</a></li><li><a href="../contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p class="footer-copyright">&copy; 2026 SecForAI. Built for offline learning.</p></div></div></footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>

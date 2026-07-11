@@ -1,0 +1,23 @@
+{
+  "name": "pentesting-learning-site",
+  "version": "1.0.0",
+  "description": "Offline-first learning website for AI/ML engineers transitioning into security",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -c-1",
+    "dev": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "security",
+    "pentesting",
+    "owasp",
+    "learning",
+    "education"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
